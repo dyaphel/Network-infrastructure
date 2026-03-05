@@ -1,0 +1,14 @@
+ip addr add 10.10.10.1/30 dev eth0
+ip addr add 192.168.1.1/24 dev eth1
+
+# In order to setup the routing we have to options.
+# The first one, since the topology is simple and R1 has a single "uplink",
+# is to set a default gateway via R2 with the following command
+#ip route add default via 10.10.10.2
+
+# Another option is to tell R1 explicitly that the subnet of S1,
+# which is 10.8.0.0/24 is reachable through R2, with the following command
+ip route add 10.8.0.0/24 via 10.10.10.2
+
+
+

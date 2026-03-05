@@ -1,0 +1,11 @@
+/etc/init.d/networking restart
+
+mkdir -p /dev/net
+mknod /dev/net/tun c 10 200
+chmod 600 /dev/net/tun
+
+chmod 600 /root/myclient2.key
+echo 'password' > /root/pass.txt
+chmod 600 /root/pass.txt
+
+openvpn --config root/client.conf --askpass /root/pass.txt &
